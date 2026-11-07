@@ -1,0 +1,124 @@
+/* Shared base styles. Load after tokens.css. Keep app-specific layout in the app's own styles.css. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-body);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+img, svg, video { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { line-height: var(--lh-tight); margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+p { margin: 0; color: var(--text-2); max-width: var(--measure); }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+.wrap { width: min(100% - 32px, var(--content)); margin-inline: auto; }
+.stack > * + * { margin-top: var(--s-4); }
+.row { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+.muted { color: var(--text-3); }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+/* Top bar */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: saturate(1.2) blur(6px);
+}
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: var(--s-4); }
+.brand { color: var(--text); font-weight: 700; text-decoration: none; font-size: var(--fs-md); }
+.nav { display: flex; gap: var(--s-4); align-items: center; }
+.nav a:not(.btn) { color: var(--text-2); text-decoration: none; font-size: var(--fs-sm); min-height: var(--hit); display: inline-flex; align-items: center; }
+
+/* Buttons: one primary, one quiet */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--hit); padding: 0 var(--s-5);
+  border-radius: var(--r-md); border: 1px solid var(--line-strong);
+  background: var(--surface); color: var(--text);
+  font: inherit; font-weight: 600; text-decoration: none; cursor: pointer;
+}
+.btn:hover { border-color: var(--text-3); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(0.94); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Cards and panels: hairline borders, no heavy shadows */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-5); }
+.panel-title { font-size: var(--fs-sm); color: var(--text-3); font-weight: 600; margin-bottom: var(--s-3); }
+
+/* Forms */
+label { display: grid; gap: var(--s-2); font-size: var(--fs-sm); color: var(--text-2); font-weight: 600; }
+input, select, textarea {
+  font: inherit; color: var(--text); background: var(--surface);
+  min-height: var(--hit); padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong); border-radius: var(--r-sm);
+  width: 100%;
+}
+textarea { padding: var(--s-3); min-height: 96px; }
+input[type="checkbox"], input[type="radio"] { width: 20px; min-height: 20px; height: 20px; accent-color: var(--accent); }
+
+/* Tables: right-aligned money, tabular figures */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+th, td { padding: var(--s-3) var(--s-4); text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--text-3); font-weight: 600; background: var(--surface-2); }
+td.money, th.money { text-align: right; font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+/* Status text uses words plus a colored hairline, never color alone */
+.badge { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--fs-xs); font-weight: 600; color: var(--text-2); }
+.badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); }
+.badge.ok::before { background: var(--ok); }
+.badge.warn::before { background: var(--warn); }
+.badge.danger::before { background: var(--danger); }
+
+/* Disclaimer: always visible on calculators and checkers */
+.notice { font-size: var(--fs-xs); color: var(--text-3); border-top: 1px solid var(--line); padding-top: var(--s-4); margin-top: var(--s-6); }
+
+/* Landing sections */
+.hero { padding: var(--s-8) 0 var(--s-7); display: grid; gap: var(--s-6); }
+.hero h1 { max-width: 18ch; }
+.hero .lede { font-size: var(--fs-lg); color: var(--text-2); max-width: 44ch; }
+.section { padding: var(--s-7) 0; border-top: 1px solid var(--line); }
+.section h2 { margin-bottom: var(--s-4); }
+.footer { padding: var(--s-6) 0 var(--s-7); border-top: 1px solid var(--line); color: var(--text-3); font-size: var(--fs-sm); }
+
+/* Product screen: the hero visual. Real sample values, drawn in CSS. */
+.screen {
+  background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-lg);
+  overflow: hidden; box-shadow: 0 1px 0 var(--line);
+}
+.screen-bar { display: flex; align-items: center; justify-content: space-between; padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); font-size: var(--fs-sm); font-weight: 600; }
+.screen-body { padding: var(--s-4); display: grid; gap: var(--s-3); }
+.screen-row { display: flex; justify-content: space-between; gap: var(--s-3); padding: var(--s-2) 0; border-bottom: 1px dashed var(--line); font-size: var(--fs-sm); }
+.screen-row:last-child { border-bottom: 0; }
+.bar { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); }
+
+/* Print: a clean report, no chrome */
+@media print {
+  .topbar, .nav, .btn, .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card, .table-wrap, .screen { box-shadow: none; border-color: #999; }
+  a { color: #000; }
+}
+
+/* Motion and touch */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media (max-width: 560px) {
+  h1 { font-size: 30px; }
+  h2 { font-size: var(--fs-lg); }
+  .hero { padding-top: var(--s-6); }
+  .nav a:not(.btn) { display: none; }
+  .nav .btn { min-height: var(--hit); padding: 0 var(--s-4); }
+}

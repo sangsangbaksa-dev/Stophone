@@ -1,0 +1,55 @@
+/* Stophone landing. Colors and type come from tokens/. Only the accent is set here. */
+:root {
+  --accent: #1D4ED8;
+  --accent-ink: #FFFFFF;
+}
+
+.eyebrow { font-size: var(--fs-xs); font-weight: 600; color: var(--text-3); margin: 0 0 var(--s-3); letter-spacing: 0.02em; }
+.hero h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; max-width: 16ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
+.price-line { margin-top: var(--s-4); font-size: var(--fs-sm); color: var(--text-3); }
+
+.sample-title { font-size: var(--fs-xs); font-weight: 600; color: var(--text-3); margin-top: var(--s-2); }
+.usage-row { display: grid; grid-template-columns: 72px 1fr 56px; gap: var(--s-3); align-items: center; font-size: var(--fs-sm); }
+.usage-row .num { text-align: right; }
+
+.feature-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+.feature h3 { font-size: var(--fs-md); margin-bottom: var(--s-2); }
+.feature p { font-size: var(--fs-sm); }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-5); counter-reset: step; }
+.steps li { display: grid; grid-template-columns: 1fr; gap: var(--s-2); padding-left: 0; }
+.steps h3 { font-size: var(--fs-md); }
+.steps p { font-size: var(--fs-sm); }
+
+.price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); align-items: start; }
+.price { font-size: var(--fs-2xl); font-weight: 700; margin: var(--s-2) 0 var(--s-4); line-height: 1.1; }
+.price .muted { font-size: var(--fs-md); font-weight: 500; }
+.checks { margin: 0 0 var(--s-5); padding-left: 18px; color: var(--text-2); font-size: var(--fs-sm); display: grid; gap: var(--s-2); }
+.btn-block { width: 100%; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.note { font-size: var(--fs-xs); color: var(--text-3); margin-top: var(--s-3); }
+
+.faq { display: grid; gap: var(--s-3); }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 0 var(--s-5); }
+.faq summary { min-height: var(--hit); display: flex; align-items: center; cursor: pointer; font-weight: 600; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; margin-left: auto; color: var(--text-3); font-size: var(--fs-lg); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding-bottom: var(--s-4); font-size: var(--fs-sm); }
+
+.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); margin: 0 0 var(--s-3); }
+
+@media (min-width: 861px) {
+  .steps { grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .feature-list, .price-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 861px) {
+  .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+}
+@media (max-width: 560px) {
+  .usage-row { grid-template-columns: 64px 1fr 48px; }
+}

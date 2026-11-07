@@ -1,0 +1,75 @@
+/* Shared design tokens. Each app sets only --accent and --accent-ink in its own file. */
+:root {
+  color-scheme: light;
+  --accent: #1D4ED8;
+  --accent-ink: #FFFFFF;
+
+  --bg: #F7F7F5;
+  --surface: #FFFFFF;
+  --surface-2: #F1F1EE;
+  --text: #17171A;
+  --text-2: #4A4A52;
+  --text-3: #6B6B74;
+  --line: #E3E3DE;
+  --line-strong: #CFCFC8;
+  --ok: #15803D;
+  --warn: #B45309;
+  --danger: #B91C1C;
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, var(--surface));
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", "Noto Sans SC", "Noto Sans CJK KR", sans-serif;
+  --font-num: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: 13px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-xl: 28px;
+  --fs-2xl: 40px;
+  --lh-body: 1.6;
+  --lh-tight: 1.2;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 72px;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --hit: 44px;
+  --content: 1080px;
+  --measure: 62ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0E0F12;
+    --surface: #17181C;
+    --surface-2: #1F2025;
+    --text: #F2F2F4;
+    --text-2: #C4C4CC;
+    --text-3: #9494A0;
+    --line: #2A2B31;
+    --line-strong: #3A3B43;
+    --accent-ink: #0E0F12;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0E0F12;
+  --surface: #17181C;
+  --surface-2: #1F2025;
+  --text: #F2F2F4;
+  --text-2: #C4C4CC;
+  --text-3: #9494A0;
+  --line: #2A2B31;
+  --line-strong: #3A3B43;
+  --accent-ink: #0E0F12;
+}
